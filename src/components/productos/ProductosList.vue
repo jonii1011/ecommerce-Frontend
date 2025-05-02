@@ -59,6 +59,13 @@
             >
               <i class="cart-icon">🛒</i> Agregar al carrito
             </button>
+            <br>
+            <button 
+                class="btn-primary" 
+                @click="verDetallesProducto(producto.id)"
+              >
+                Ver detalles
+              </button>
           </div>
         </div>
       </div>
@@ -70,6 +77,7 @@
 import { ref, onMounted } from 'vue';
 import productoService from '../../api/productoService'
 import type { Producto } from '../../interfaces/Producto';
+import router from '../../router';
 
 const productos = ref<Producto[]>([]);
 const loading = ref(true);
@@ -116,22 +124,32 @@ const agregarAlCarrito = (producto: Producto) => {
   // Implementar lógica para agregar al carrito
   console.log('Agregando al carrito:', producto);
 };
+
+// Navegar al detalle del producto
+const verDetallesProducto = (productoId: number) => {
+  router.push(`/productos/${productoId}`);
+};
 </script>
 
 <style scoped>
 .productos-container {
-  max-width: 1200px;
+  max-width: 1150px;
+  width: 100%;
   margin: 0 auto;
+  margin-top: 730px;
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #757575;
   margin-bottom: 2rem;
   text-align: center;
   position: relative;
+  display: block; /* Asegúrate de que el título sea visible */
 }
 
 .title:after {
@@ -139,7 +157,7 @@ const agregarAlCarrito = (producto: Producto) => {
   display: block;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #42b883, #35495e);
+  background: linear-gradient(90deg, #000000, #fafafa);
   margin: 0.5rem auto 0;
   border-radius: 2px;
 }
@@ -236,12 +254,12 @@ const agregarAlCarrito = (producto: Producto) => {
   margin-bottom: 1rem;
 }
 
-/* Products grid - Modificado para garantizar disposición horizontal */
 .productos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Muestra 3 productos por fila */
   gap: 2rem;
   width: 100%;
+  overflow: hidden; /* Asegúrate de que no haya desbordamiento */
 }
 
 .producto-card {
@@ -252,8 +270,9 @@ const agregarAlCarrito = (producto: Producto) => {
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100%; /* Mantiene la altura de los productos */
 }
+
 
 .producto-card:hover {
   transform: translateY(-5px);
@@ -356,7 +375,7 @@ const agregarAlCarrito = (producto: Producto) => {
 
 .add-to-cart-btn {
   width: 100%;
-  background-color: #42b883;
+  background-color: #276e4f;
   color: white;
   border: none;
   padding: 0.75rem;

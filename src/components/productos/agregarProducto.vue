@@ -359,6 +359,7 @@ const limpiarFormulario = () => {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #888888;
 }
 
 h2 {
@@ -366,7 +367,7 @@ h2 {
 }
 
 .success-message {
-  background-color: #d4edda;
+  background-color: #11912f;
   color: #155724;
   padding: 10px;
   margin-bottom: 15px;
@@ -422,7 +423,7 @@ button {
 }
 
 button[type="submit"] {
-  background-color: #42b883;
+  background-color: #276e4f;
   color: white;
 }
 
